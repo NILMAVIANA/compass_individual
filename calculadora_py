@@ -1,0 +1,45 @@
+def calculadora():
+    
+    print("--- Calculadora Simples ---")
+    print("Operações disponíveis: +, -, *, /, ** (potência)")
+    
+    while True:
+        try:
+            num1 = float(input("\nDigite o primeiro número: "))
+            
+            operador = input("Digite o operador (+, -, *, /,): ")
+            
+            num2 = float(input("Digite o segundo número: "))
+
+            # operadores
+            if operador == '+':
+                resultado = num1 + num2
+            elif operador == '-':
+                resultado = num1 - num2
+            elif operador == '*':
+                resultado = num1 * num2
+            elif operador == '/':
+                # Trata a divisão por zero
+                if num2 == 0:
+                    print("Erro: Divisão por zero não é permitida.")
+                    continue  # Volta para o início do loop
+                resultado = num1 / num2
+
+            else:
+                print(resultado)
+
+            
+
+        except ValueError:
+            print("Entrada inválida. Por favor, digite apenas números.")
+        except Exception as e:
+            print(f"Ocorreu um erro: {e}")
+
+        # Pergunta se o usuário quer fazer outro cálculo
+        continuar = input("Deseja fazer outro cálculo? (s/n): ").lower()
+        if continuar != 's':
+            print("Calculadora encerrada. Até mais!")
+            break
+
+# Chama a função para iniciar a calculadora
+calculadora()
